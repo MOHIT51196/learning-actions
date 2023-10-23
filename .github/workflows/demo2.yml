@@ -24,10 +24,8 @@ jobs:
         uses: actions/checkout@v3
       - name: configure
         run: cmake .
-      - name: read-files
-        run: ls && cat Makefile
       - name: build
-        run: make
+        run: msbuild test-app.sln
       - name: execute
         run: ./test-app
   run-on-macos:
