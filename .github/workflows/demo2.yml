@@ -27,7 +27,7 @@ jobs:
       - name: configure
         run: cmake .
       - name: build
-        run: msbuild test-app.sln /p:OutputPath=${GITHUB_WORKSPACE} && echo ${GITHUB_WORKSPACE} && ls
+        run: msbuild test-app.sln && ls Debug && ls x64
       - name: execute
         run: .\test-app
   # run-on-macos:
