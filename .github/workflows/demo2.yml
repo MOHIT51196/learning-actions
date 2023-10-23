@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: liniting
+        uses: cpp-linter/cpp-linter-action@v2.6.1            
       - name: configure
         run: cmake .
       - name: build
@@ -22,6 +24,8 @@ jobs:
         uses: actions/checkout@v3
       - name: configure
         run: cmake .
+      - name: read-files
+        run: ls && cat Makefile
       - name: build
         run: make
       - name: execute
@@ -31,6 +35,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: liniting
+        uses: cpp-linter/cpp-linter-action@v2.6.1 
       - name: configure
         run: cmake .
       - name: build
