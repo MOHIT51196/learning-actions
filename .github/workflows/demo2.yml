@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: setup-msbuild
+        uses: microsoft/setup-msbuild@v1      
       - name: configure
         run: cmake .
       - name: build
