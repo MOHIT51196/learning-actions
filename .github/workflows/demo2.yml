@@ -27,9 +27,9 @@ jobs:
       - name: configure
         run: cmake .
       - name: build
-        run: msbuild test-app.sln
+        run: msbuild test-app.sln && ls
       - name: execute
-        run: ./test-app
+        run: .\test-app
   run-on-macos:
     runs-on: macos-latest
     steps:
