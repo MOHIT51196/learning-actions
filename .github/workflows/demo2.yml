@@ -4,24 +4,26 @@ on:
     branches:
       - main
 jobs:
-  # run-on-linux:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: checkout
-  #       uses: actions/checkout@v3
-  #     - name: liniting
-  #       uses: cpp-linter/cpp-linter-action@v2.6.1            
-  #     - name: configure
-  #       run: cmake .
-  #     - name: build
-  #       run: make
-  #     - name: execute
-  #       run: ./test-app
+  run-on-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: lint
+        uses: cpp-linter/cpp-linter-action@v2.6.1            
+      - name: configure
+        run: cmake .
+      - name: build
+        run: make
+      - name: execute
+        run: ./test-app
   run-on-windows:
     runs-on: windows-latest
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: lint
+        uses: cpp-linter/cpp-linter-action@v2.6.1 
       - name: setup-msbuild
         uses: microsoft/setup-msbuild@v1      
       - name: configure
@@ -30,16 +32,16 @@ jobs:
         run: msbuild test-app.sln
       - name: execute
         run: .\Debug\test-app
-  # run-on-macos:
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: checkout
-  #       uses: actions/checkout@v3
-  #     - name: liniting
-  #       uses: cpp-linter/cpp-linter-action@v2.6.1 
-  #     - name: configure
-  #       run: cmake .
-  #     - name: build
-  #       run: make
-  #     - name: execute
-  #       run: ./test-app
+  run-on-macos:
+    runs-on: macos-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: lint
+        uses: cpp-linter/cpp-linter-action@v2.6.1 
+      - name: configure
+        run: cmake .
+      - name: build
+        run: make
+      - name: execute
+        run: ./test-app
