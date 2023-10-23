@@ -1,0 +1,24 @@
+name: demo1 # name of workflow - optional
+on: push # can be written as [push]
+jobs:
+  job1: # job name
+    runs-on: ubuntu-latest # runner type
+    steps:
+      - name: ubuntu-datetime # name of step - optional
+        run: date
+  job2:
+    runs-on: windows-latest
+    steps:
+      - name: windows-datetime
+        run: Get-Date
+  job3:
+    runs-on: macos-latest
+    steps:
+      - name: macos-datetime
+        run: date
+  job4:
+    needs: [job1, job2, job3]
+    runs-on: ubuntu-latest
+    steps:
+      - name: final-datetime
+        run: date
