@@ -7,7 +7,7 @@ jobs:
       - name: fetch project
         uses: actions/checkout@v3
         with:
-          repository: https://github.com/MOHIT51196/cmake-demo.git
+          repository: MOHIT51196/cmake-demo # not url but {owner}/{repo}
           ref: master
           path: cpp-app
       - name: build project
