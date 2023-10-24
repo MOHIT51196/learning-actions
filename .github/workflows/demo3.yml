@@ -1,0 +1,16 @@
+name: demo3
+on: [ push ]
+jobs:
+  fetch-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fetch project
+        uses: actions/checkout@v3
+        with:
+          repository: https://github.com/MOHIT51196/cmake-demo.git
+          ref: master
+          path: cpp-app
+      - name: build project
+        run: cd cpp-app && cmake . && make
+      - name: run project
+        run: cd cpp-app && ./cmakedemo
