@@ -73,7 +73,7 @@ on:
 - 1000 API request/hour to github from workflows
 - Job can take max 6 hours of runtime
 
-*NOTE : Exceeding these limits result in job queuing or even failing*
+*Note : Exceeding these limits result in job queuing or even failing*
 
 ## Dependencies
 
@@ -90,3 +90,41 @@ jobs:
   job3:
     needs: [job1, job2]  # job 1 and 2 can run parallel but will run before job 3 always
 ```
+
+# Environment
+- env variables are case sensitive
+- injected env variables in the runtime before job starts
+- env cab be defined at following levels
+  - job
+  - workflow
+  - step
+- github set the following env variables (other exists)
+  - GITHUB_WORKFLOW
+  - GITHUB_WORKSPACE
+  - GITHUB_ACTION
+  - GITHUB_ACTOR
+  - GITHUB_SHA
+  - GITHUB_REPOSITORY
+  - GITHUB_REF
+  - GITHUB_EVENT_NAME
+  - GITHUB_EVENT_PATH
+  - HOME
+
+### Syntax
+
+- Shell syntax
+  - env variable are accessible via shell
+  - linux : ```$<VARIABLE NAME>```
+  - windows : ```$Env:<VARIABLE NAME>```
+- YAML syntax
+  - OS agnostic : ```${{ env.<VARIABLE NAME> }}```
+
+# Secrets
+- `secrets` are like credentials in jenkins
+- stored as encrypted env variables
+- cannot be viewed or edited
+- secret value size is limited to `64KB`
+- workflows can have maximum `100` secrets
+
+*Note : For secrets with size more than 64 KB, stored the secrets in encrypted format as a file in the repo.
+Then stored the decryption key in secrets.*
